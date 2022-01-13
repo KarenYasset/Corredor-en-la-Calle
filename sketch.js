@@ -49,7 +49,12 @@ function draw()
   if(gameState === PLAY)
   {
     background(0);
-    boy.x = World.mouseX;
+    if(touches.length > 0 || World.mouseX)
+    {
+      boy.x = World.mouseX;
+      touches = [];
+    }
+    //boy.x = (World.mouseX || touches.length > 0);
 
     edges = createEdgeSprites();
     boy.collide(edges);
